@@ -77,8 +77,10 @@ const platform_pin_mapping_t gpio_mapping[] =
   [BOOT_SEL]                          = {GPIO_PINS_OUT_OF_RANGE}, 
   [MFG_SEL]                           = {GPIO_PINS_OUT_OF_RANGE}, 
   [EasyLink_BUTTON]                   = {GPIO_MAKE_PIN(HW_GPIOC,  6)}, 
+  //add by jacky for wifi lighting
+  [HOME_SWITCH_1]			  = {GPIO_MAKE_PIN(HW_GPIOC,  2)},
+  [HOME_SWITCH_2]			  = {GPIO_MAKE_PIN(HW_GPIOC,  7)},
 
-  [GPIO_TEST]                         = {GPIO_MAKE_PIN(HW_GPIOC,  2)},
 };
 
 /******************************************************
@@ -120,16 +122,31 @@ OSStatus mico_platform_init( void )
   
   //  Initialise EasyLink buttons
   MicoGpioInitialize( (mico_gpio_t)EasyLink_BUTTON, INPUT_PULL_UP );
+
+  // start:add by jacky for initialize the gpio
+  MicoGpioInitialize( (mico_gpio_t)HOME_SWITCH_1, OUTPUT_PUSH_PULL);
+  MicoGpioInitialize( (mico_gpio_t)HOME_SWITCH_2, OUTPUT_PUSH_PULL);
+  // end
+  
   mico_init_timer(&_button_EL_timer, RestoreDefault_TimeOut, _button_EL_Timeout_handler, NULL);
   MicoGpioEnableIRQ( (mico_gpio_t)EasyLink_BUTTON, IRQ_TRIGGER_BOTH_EDGES, _button_EL_irq_handler, NULL );
   
-  MicoGpioInitialize( (mico_gpio_t)GPIO_TEST, OUTPUT_PUSH_PULL );
-  MicoGpioOutputHigh( (mico_gpio_t)GPIO_TEST);
+  //comment by jacky
+  //MicoGpioInitialize( (mico_gpio_t)GPIO_TEST, OUTPUT_PUSH_PULL );
+  //MicoGpioOutputHigh( (mico_gpio_t)GPIO_TEST);
   return kNoErr;
 }
 
 void init_platform( void )
 {
+    /**
+    *	define for swith GPIO PORTC-2,PORTC-7
+    * add by Jacky
+    */
+    PORT_HAL_SetMuxMode(PORTC_BASE,2u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTC_BASE,7u,kPortMuxAsGpio);
+	//end
+	
     PORT_HAL_SetMuxMode(PORTC_BASE,3u,kPortMuxAsGpio);
     PORT_HAL_SetMuxMode(PORTC_BASE,4u,kPortMuxAsGpio);
     GPIO_DRV_OutputPinInit(&ledPins[0]);
@@ -192,3 +209,20 @@ bool MicoShouldEnterMFGMode(void)
   else
     return false;
 }
+//add by jacky for wifi lighting
+void HomeSwitch1Control(bool onoff){
+ 	if (onoff) {
+        MicoGpioOutputHigh((mico_gpio_t)HOME_SWITCH_1);
+    } else {
+        MicoGpioOutputLow((mico_gpio_t)HOME_SWITCH_1);
+    }
+}
+
+void HomeSwitch2Control(bool onoff){
+ 	if (onoff) {
+        MicoGpioOutputHigh((mico_gpio_t)HOME_SWITCH_2);
+    } else {
+        MicoGpioOutputLow((mico_gpio_t)HOME_SWITCH_2);
+    }
+}
+

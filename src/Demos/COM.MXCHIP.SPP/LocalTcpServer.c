@@ -26,6 +26,7 @@
 
 #include "SppProtocol.h"
 #include "SocketUtils.h"
+#include "HomeProtocolParse.h"
 
 #define server_log(M, ...) custom_log("TCP SERVER", M, ##__VA_ARGS__)
 #define server_log_trace() custom_log_trace("TCP SERVER")
@@ -147,7 +148,9 @@ void localTcpClient_thread(void *inFd)
     if (FD_ISSET(clientFd, &readfds)) {
       len = recv(clientFd, inDataBuffer, wlanBufferLen, 0);
       require_action_quiet(len>0, exit, err = kConnectionErr);
-      sppWlanCommandProcess(inDataBuffer, &len, clientFd, Context);
+      //sppWlanCommandProcess(inDataBuffer, &len, clientFd, Context);
+      HomeWlanCommandProcess(inDataBuffer, &len, clientFd, Context);
+	  
     }
   }
 

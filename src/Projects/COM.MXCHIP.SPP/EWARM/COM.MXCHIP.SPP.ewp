@@ -4864,7 +4864,7 @@
         </option>
         <option>
           <name>OGLastSavedByProductVersion</name>
-          <state>7.10.3.6927</state>
+          <state>7.20.5.7621</state>
         </option>
         <option>
           <name>GeneralEnableMisra</name>
@@ -6697,6 +6697,12 @@
   </configuration>
   <group>
     <name>Application</name>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Demos\COM.MXCHIP.SPP\HomeProtocolParse.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Demos\COM.MXCHIP.SPP\HomeProtocolParse.h</name>
+    </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\Demos\COM.MXCHIP.SPP\LocalTcpServer.c</name>
     </file>

@@ -118,7 +118,8 @@ typedef enum
   BOOT_SEL,
   MFG_SEL,
   EasyLink_BUTTON,
-  GPIO_TEST,
+  HOME_SWITCH_1,//add by jacky for wifi lighting
+  HOME_SWITCH_2,
   MICO_COMMON_GPIO_MAX,
 } mico_common_gpio_t;
 
