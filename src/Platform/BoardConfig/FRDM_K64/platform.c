@@ -80,6 +80,7 @@ const platform_pin_mapping_t gpio_mapping[] =
   //add by jacky for wifi lighting
   [HOME_SWITCH_1]			  = {GPIO_MAKE_PIN(HW_GPIOC,  2)},
   [HOME_SWITCH_2]			  = {GPIO_MAKE_PIN(HW_GPIOC,  7)},
+  [RS485_BUS_LISTEN]			 ={GPIO_MAKE_PIN(HW_GPIOC,  5)}
 
 };
 
@@ -126,6 +127,7 @@ OSStatus mico_platform_init( void )
   // start:add by jacky for initialize the gpio
   MicoGpioInitialize( (mico_gpio_t)HOME_SWITCH_1, OUTPUT_PUSH_PULL);
   MicoGpioInitialize( (mico_gpio_t)HOME_SWITCH_2, OUTPUT_PUSH_PULL);
+  MicoGpioInitialize( (mico_gpio_t)RS485_BUS_LISTEN, INPUT_PULL_DOWN);
   // end
   
   mico_init_timer(&_button_EL_timer, RestoreDefault_TimeOut, _button_EL_Timeout_handler, NULL);
@@ -140,11 +142,12 @@ OSStatus mico_platform_init( void )
 void init_platform( void )
 {
     /**
-    *	define for swith GPIO PORTC-2,PORTC-7
+    *	define for swith GPIO PORTC-2,PORTC-7,PORTC-5
     * add by Jacky
     */
     PORT_HAL_SetMuxMode(PORTC_BASE,2u,kPortMuxAsGpio);
     PORT_HAL_SetMuxMode(PORTC_BASE,7u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTC_BASE,5u,kPortMuxAsGpio);
 	//end
 	
     PORT_HAL_SetMuxMode(PORTC_BASE,3u,kPortMuxAsGpio);

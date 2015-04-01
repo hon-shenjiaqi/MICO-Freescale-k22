@@ -8235,6 +8235,12 @@
       <name>$PROJ_DIR$\..\..\..\Library\support\URLUtils.c</name>
     </file>
   </group>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\Demos\COM.MXCHIP.SPP\SparkLight.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\Demos\COM.MXCHIP.SPP\SparkLight.h</name>
+  </file>
 </project>
 
 

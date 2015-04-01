@@ -1,20 +1,20 @@
-"C:\Users\Jiaqi\Desktop\MICO-master\External\Curve25519\curve25519-donna.c"
+"C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\External\Curve25519\curve25519-donna.c"
 -std=c99
 -ferror-limit=100
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\Library\inc
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\Library\inc
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\STM32F2xx_StdPeriph_Driver\inc
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\STM32F2xx_StdPeriph_Driver\inc
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\Platform
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\Platform
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\Library\support
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\Library\support
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\MICO
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\MICO
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\Projects\COM.MXCHIP.SPP\EWARM\..\..\..
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\Projects\COM.MXCHIP.SPP\EWARM\..\..\..
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\Demos\COM.Apple.HomeKit
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\Projects\COM.MXCHIP.SPP\EWARM\..\..\..\Demos\COM.Apple.HomeKit
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\CMSIS\Include
 -I
@@ -22,19 +22,19 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\inc\c
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\Library\inc
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\Library\inc
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\STM32F2xx_StdPeriph_Driver\inc
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\STM32F2xx_StdPeriph_Driver\inc
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\Platform
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\Platform
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\Library\support
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\Library\support
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\MICO
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\MICO
 -I
-C:\Users\Jiaqi\Desktop\MICO-master
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src
 -I
-C:\Users\Jiaqi\Desktop\MICO-master\Demos\COM.Apple.HomeKit
+C:\Users\Jiaqi\Desktop\Github\MICO-Freescale-k22\src\Demos\COM.Apple.HomeKit
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\CMSIS\Include
 -DDEBUG=1
@@ -242,8 +242,8 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\CMSIS\Include
 -D__HAS_LOCATED_DECLARATION__=1
 -D__HAS_LOCATED_WITH_INIT__=1
 -D__IAR_COMPILERBASE__=593926
--D__DATE__="Mar 30 2015"
--D__TIME__="17:09:03"
+-D__DATE__="Mar 31 2015"
+-D__TIME__="16:15:21"
 -D__STDC__=1
 -D__STDC_VERSION__=199901L
 -D__STDC_HOSTED__=1

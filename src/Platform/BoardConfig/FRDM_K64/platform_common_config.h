@@ -120,6 +120,7 @@ typedef enum
   EasyLink_BUTTON,
   HOME_SWITCH_1,//add by jacky for wifi lighting
   HOME_SWITCH_2,
+  RS485_BUS_LISTEN,
   MICO_COMMON_GPIO_MAX,
 } mico_common_gpio_t;
 
