@@ -60,7 +60,16 @@ static void release_Tx_Package(){
 
 int checkBus()
 {
-	return -1;
+	if(tx_package.count_resend_times==0){
+		return 0;
+	}
+	else if(tx_package.count_resend_times==1){
+		return -1;
+	}
+	else if(tx_package.count_resend_times==2){
+		return 0;
+	}
+	
 }
 
 
@@ -78,22 +87,18 @@ int sendPackageToBus(mico_uart_t uart, const void* data, uint32_t size ){
 		if(tx_package.count_resend_times==0){
 			mico_init_timer(&_bus_listen_timer,TIMEOUT_BUS_LISTEN_MS , _bus_listen_timer_handler, NULL);
 			mico_start_timer(&_bus_listen_timer);
-			MicoUartSend(UART_FOR_APP,&tx_package.count_resend_times,1);
+			//MicoUartSend(UART_FOR_APP,&tx_package.count_resend_times,1);
 			return kInProgressErr;
 		}
 		else if(tx_package.count_resend_times<3){
-			mico_stop_timer(&_bus_listen_timer);
-  			mico_deinit_timer( &_bus_listen_timer );
-  			mico_init_timer(&_bus_listen_timer, TIMEOUT_BUS_LISTEN_MS, _bus_listen_timer_handler, NULL);
- 			mico_start_timer(&_bus_listen_timer);
-			MicoUartSend(UART_FOR_APP,&tx_package.count_resend_times,1);
+			
+			//MicoUartSend(UART_FOR_APP,&tx_package.count_resend_times,1);
 			return kInProgressErr;
 		}
 		else{
-			mico_stop_timer(&_bus_listen_timer);
-  			mico_deinit_timer( &_bus_listen_timer );
+			
 			release_Tx_Package();
-			MicoUartSend(UART_FOR_APP,&tx_package.count_resend_times,1);
+			//MicoUartSend(UART_FOR_APP,&tx_package.count_resend_times,1);
 			return kGeneralErr;
 		}
   		
@@ -107,7 +112,20 @@ static void _bus_listen_timer_handler( void* arg )
   OSStatus err= sendPackageToBus(UART_FOR_APP, &tx_package.send_buffer, tx_package.send_len );
   if(err == kNoErr){
 	release_Tx_Package();
+	mico_stop_timer(&_bus_listen_timer);
+  	mico_deinit_timer( &_bus_listen_timer );
   }
+  else if( err == kInProgressErr){
+		mico_stop_timer(&_bus_listen_timer);
+  		mico_deinit_timer( &_bus_listen_timer );
+  		mico_init_timer(&_bus_listen_timer, TIMEOUT_BUS_LISTEN_MS, _bus_listen_timer_handler, NULL);
+ 		mico_start_timer(&_bus_listen_timer);
+  }
+  else if( err == kGeneralErr){
+	mico_stop_timer(&_bus_listen_timer);
+  	mico_deinit_timer( &_bus_listen_timer );
+  }
+  
 }
 
 unsigned short crc_16(unsigned char * ptr,unsigned char len)
